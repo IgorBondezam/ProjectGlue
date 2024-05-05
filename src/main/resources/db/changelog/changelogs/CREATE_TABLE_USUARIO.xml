@@ -1,0 +1,38 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="1" author="igor.bondezam">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela USUARIO já existe">
+            <not>
+                <tableExists tableName="USUARIO"/>
+            </not>
+        </preConditions>
+        <createTable tableName="USUARIO">
+            <column name="id" type="${numerico}">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_USUARIO"/>
+            </column>
+            <column name="name" type="${texto255}"/>
+            <column name="age" type="${numerico}"/>
+            <column name="birthdaydate" type="${data}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf" type="${texto20}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="${texto100}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="height" type="${numericoDecimal}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight" type="${numericoDecimal}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
