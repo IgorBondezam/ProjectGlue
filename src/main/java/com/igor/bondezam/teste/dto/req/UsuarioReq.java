@@ -1,7 +1,7 @@
 package com.igor.bondezam.teste.dto.req;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
+@Valid
 public class UsuarioReq {
 
     private String name;

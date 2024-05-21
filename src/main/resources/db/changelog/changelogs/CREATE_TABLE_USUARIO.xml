@@ -34,5 +34,14 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="2" author="igor.bondezam">
+        <preConditions onFail="MARK_RAN" onFailMessage="Sequence sqe_usuario já existe">
+            <not>
+                <sequenceExists sequenceName="sqe_usuario"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="sqe_usuario" incrementBy="1"
+                        dataType="${sequence}" startValue="1"/>
+    </changeSet>
 
 </databaseChangeLog>

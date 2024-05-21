@@ -1,13 +1,14 @@
 package com.igor.bondezam.teste.service;
 
+import com.igor.bondezam.teste.interfaces.SaveEntity;
 import com.igor.bondezam.teste.repository.CrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
-public class CrudService<E, ID> {
+@Transactional
+public class CrudService<E extends SaveEntity<ID>, ID> {
 
     @Autowired
     private CrudRepository<E, ID> repository;
@@ -21,6 +22,7 @@ public class CrudService<E, ID> {
     }
 
     public E createOrUpdateEntity(ID id, E entity){
+        entity.setId(id);
         return createOrUpdateEntity(entity);
     }
 

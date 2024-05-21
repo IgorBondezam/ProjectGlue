@@ -1,5 +1,6 @@
 package com.igor.bondezam.teste.domain;
 
+import com.igor.bondezam.teste.interfaces.SaveEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -13,14 +14,15 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
-public class Usuario {
+public class Usuario implements SaveEntity<Long> {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sqe_usuario")
+    @SequenceGenerator(allocationSize = 1, name = "sqe_usuario")
     private Long id;
 
     private String name;
     private Integer age;
-    @Pattern(regexp = "dd/MM/yyyy")
     @Column(name = "birthdaydate")
     private LocalDate birthdayDate;
     @CPF

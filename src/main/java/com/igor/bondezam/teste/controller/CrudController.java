@@ -1,17 +1,16 @@
 package com.igor.bondezam.teste.controller;
 
 import com.igor.bondezam.teste.converter.CrudConverter;
+import com.igor.bondezam.teste.interfaces.SaveEntity;
 import com.igor.bondezam.teste.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
-public class CrudController<E, ID, EREQ, ERES> {
+public class CrudController<E extends SaveEntity<ID>, ID, EREQ, ERES> {
 
     @Autowired
     private CrudService<E, ID> service;
@@ -25,7 +24,7 @@ public class CrudController<E, ID, EREQ, ERES> {
                 converter::entityToRes).collect(Collectors.toList()));
     }
 
-    @GetMapping(name = "/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<ERES> findById(@PathVariable("id") ID id){
         return ResponseEntity.ok(converter.entityToRes(service.findById(id)));
     }
@@ -39,12 +38,12 @@ public class CrudController<E, ID, EREQ, ERES> {
         return ResponseEntity.status(201).build();
     }
 
-    @PutMapping(name = "/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<ERES> updateUsuario(@PathVariable("id") ID id, @RequestBody EREQ req){
         return ResponseEntity.ok(converter.entityToRes(service.createOrUpdateEntity(id, converter.reqToEntity(req))));
     }
 
-    @DeleteMapping(name = "/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable("id") ID id){
         service.deleteEntity(id);
         return ResponseEntity.noContent().build();
