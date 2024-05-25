@@ -31,11 +31,16 @@ public class CrudController<E extends SaveEntity<ID>, ID, EREQ, ERES> {
 
     @PostMapping
     public ResponseEntity<ERES> createUsuario(@RequestBody EREQ req){
-        ResponseEntity.ok(
+        for (int i = 0; i < 300; i++) {
+            converter.entityToRes(
+                    service.createOrUpdateEntity(
+                            converter.reqToEntity(req)));
+        }
+        ERES saved =
                 converter.entityToRes(
                         service.createOrUpdateEntity(
-                                converter.reqToEntity(req))));
-        return ResponseEntity.status(201).build();
+                                converter.reqToEntity(req)));
+        return ResponseEntity.status(201).body(saved);
     }
 
     @PutMapping(value = "/{id}")

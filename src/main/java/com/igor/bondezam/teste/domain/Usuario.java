@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@Cacheable(value = "usuario")
 @Builder
 public class Usuario implements SaveEntity<Long> {
 
@@ -33,6 +35,4 @@ public class Usuario implements SaveEntity<Long> {
     private String email;
     private Double height;
     private Double weight;
-
-
 }
