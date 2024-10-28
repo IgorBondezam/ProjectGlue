@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public class UsuarioService extends CrudService<Usuario, Long> {
 
-    @Override
-    @Cacheable(value = "usuario")
-    public List<Usuario> findAll() {
-        return super.findAll();
-    }
+//    @Override
+//    @Cacheable(value = "usuario")
+//    public List<Usuario> findAll() {
+//        return super.findAll();
+//    }
 }

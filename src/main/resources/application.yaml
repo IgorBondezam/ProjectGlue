@@ -13,3 +13,5 @@ spring:
     enabled: true
   application:
     name: teste
+  cache:
+    type: redis

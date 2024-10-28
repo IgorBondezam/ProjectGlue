@@ -1,5 +1,6 @@
 package com.igor.bondezam.teste.config;
 
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -13,6 +14,8 @@ public class JedisConfig {
 
     @Bean
     public RedisCacheConfiguration cacheConfiguration() {
+        System.out.println("INICIANDO REDIS CAHCE AQUIIIIIIIIIIIIIII");
+
         return RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofMinutes(60))
                 .disableCachingNullValues()
