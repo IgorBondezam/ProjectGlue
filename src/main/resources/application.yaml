@@ -15,3 +15,11 @@ spring:
     name: teste
   cache:
     type: redis
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+api:
+  utils:
+    cacheDuration: 5 # Duração cache em segundos
