@@ -31,6 +31,12 @@
             <column name="weight" type="${numericoDecimal}">
                 <constraints nullable="false"/>
             </column>
+            <column name="password" type="${texto255}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="${texto255}">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
