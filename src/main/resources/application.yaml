@@ -23,3 +23,5 @@ spring:
 api:
   utils:
     cacheDuration: 5 # Duração cache em segundos
+  security:
+    token: Segredooooo

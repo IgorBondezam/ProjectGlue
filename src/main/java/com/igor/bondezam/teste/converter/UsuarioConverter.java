@@ -19,6 +19,7 @@ public class UsuarioConverter implements CrudConverter<Usuario, UsuarioReq, Usua
         usuario.setEmail(usuarioReq.getEmail());
         usuario.setHeight(usuarioReq.getHeight());
         usuario.setWeight(usuarioReq.getWeight());
+        usuario.setPassword(usuarioReq.getPassword());
         return usuario;
     }
 

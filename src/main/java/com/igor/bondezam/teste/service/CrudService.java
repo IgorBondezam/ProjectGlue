@@ -15,6 +15,10 @@ public class CrudService<E extends SaveEntity<ID>, ID> {
     @Autowired
     private CrudRepository<E, ID> repository;
 
+    public CrudRepository<E, ID> getRepository() {
+        return repository;
+    }
+
     @Cacheable(cacheNames = "entities", key = "#root.targetClass.name" + '.' + "#root.method.name") // Para todoos os findAll irá fazer o cache
     public List<E> findAll(){
         return repository.findAll();

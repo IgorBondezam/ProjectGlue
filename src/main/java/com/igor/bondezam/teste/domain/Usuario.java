@@ -46,7 +46,7 @@ public class Usuario implements SaveEntity<Long>, UserDetails, Serializable {
     private Double height;
     private Double weight;
 
-    private UserRole role;
+    private UserRole role = UserRole.USER;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

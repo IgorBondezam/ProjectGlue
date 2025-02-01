@@ -1,7 +1,7 @@
 package com.igor.bondezam.teste.config.serviceConfig.auth;
 
-import com.desafio.profissional.magic.domain.User;
-import com.desafio.profissional.magic.repository.UserRepository;
+import com.igor.bondezam.teste.domain.Usuario;
+import com.igor.bondezam.teste.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,11 +14,11 @@ import java.util.Objects;
 public class AuthService implements UserDetailsService {
 
     @Autowired
-    private UserRepository repository;
+    private UsuarioRepository repository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = repository.findByEmail(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario user = repository.findUsuarioByEmail(email);
         if(Objects.isNull(user)){
             throw new UsernameNotFoundException("User not found, this user doesn't exist");
         }

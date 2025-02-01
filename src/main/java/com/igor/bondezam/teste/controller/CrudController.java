@@ -1,6 +1,7 @@
 package com.igor.bondezam.teste.controller;
 
 import com.igor.bondezam.teste.converter.CrudConverter;
+import com.igor.bondezam.teste.domain.Usuario;
 import com.igor.bondezam.teste.interfaces.SaveEntity;
 import com.igor.bondezam.teste.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CrudController<E extends SaveEntity<ID>, ID, EREQ, ERES> {
+public abstract class CrudController<E extends SaveEntity<ID>, ID, EREQ, ERES> {
 
     @Autowired
     private CrudService<E, ID> service;
 
     @Autowired
     private CrudConverter<E, EREQ, ERES> converter;
+
+    public CrudService<E, ID> getService() {
+        return this.service;
+    }
 
     @GetMapping
     public ResponseEntity<List<ERES>> findAll(){

@@ -26,10 +26,8 @@ public class SecurityConfigurations {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers(HttpMethod.POST, "/login").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/user").permitAll();
-                    req.requestMatchers(HttpMethod.GET, "/user").hasRole("ADMIN");
-                    req.requestMatchers(HttpMethod.GET, "/deck").hasRole("ADMIN");
-                    req.requestMatchers(HttpMethod.GET, "/card/seed").hasRole("ADMIN");
+                    req.requestMatchers(HttpMethod.POST, "/usuario").permitAll();
+                    req.requestMatchers(HttpMethod.GET, "/teste").hasRole("ADMIN");
                     req.requestMatchers( "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
                     req.anyRequest().authenticated();
                 })
