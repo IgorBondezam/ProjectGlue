@@ -1,0 +1,31 @@
+type Usuario {
+    id: Int!
+    name: String
+    age: Int
+    birthdayDate: String
+    cpf: String
+    email: String
+    password: String
+    height: Float
+    weight: Float
+}
+
+input UsuarioCreate {
+    name: String
+    birthdayDate: String
+    cpf: String
+    email: String
+    password: String
+    height: Float
+    weight: Float
+}
+
+type Query {
+    findAllUsuario: [Usuario]
+}
+
+#type Mutation {
+#    createPost(post: PostCreate!): [Post]
+#    #    createComment(comment: CommentCreate!): [Comment]
+#}
+

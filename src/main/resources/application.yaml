@@ -1,4 +1,6 @@
 spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   datasource:
     url: jdbc:postgresql://localhost:5432/teste_java_spring
     username: teste_java_spring
@@ -19,6 +21,9 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+  graphql:
+    graphiql:
+      enabled: true
 
 api:
   utils:
